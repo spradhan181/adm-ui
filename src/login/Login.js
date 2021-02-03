@@ -1,13 +1,15 @@
 
+import axios from "../axios-adm";
 import { Component } from "react";
 import loginImage from "../resources/login.png"
+import "./Login.css";
 class Login extends Component {
     state = {
         userdata:{
             username: "",
             password: ""
         },
-        response: "",
+        message: "",
         displayResult: false
     }
 
@@ -28,11 +30,22 @@ class Login extends Component {
 
     submitData = () =>{
         console.log(this.state.userdata);
-        this.setState({response : "Invalid Credentials, please check again !!!"})
+    
         if(this.state.userdata.username == "" || this.state.userdata.password == ""){
-            this.setState({response : " Please provide required credentials."})
+            this.setState({message : " Please provide required credentials."})
         }
         this.setState({displayResult : true})
+        axios.post('http://localhost:8080/signin', this.state.userdata)
+        .then(response => {
+            console.log(response);
+            this.setState({message : response.data.result})
+        })
+        .catch( error =>{
+            console.log(error);
+            this.setState({message : "Invalid Credentials, please check again !!!"})
+        })
+
+        
     }
 
     handleClick = () => {
@@ -42,10 +55,10 @@ class Login extends Component {
     render(){
         let result = null;
         if(this.state.displayResult){
-            result = <div style={{color : "red"}}>{this.state.response}</div>
+            result = <div style={{color : "red"}}>{this.state.message}</div>
         }
         return(
-            <div style={{textAlign : "center"}}>
+            <div  className = "text-align">
                 <h1>Welcome to ADM UI Bitu</h1>
                 <img src = {loginImage} height="60px" width= "60px"/>
                
