@@ -46,7 +46,7 @@ class Login extends Component {
         }
         return(
             <div style={{textAlign : "center"}}>
-                <h1>Welcome to ADM UI</h1>
+                <h1>Welcome to ADM UI Bitu</h1>
                 <img src = {loginImage} height="60px" width= "60px"/>
                
                 <div className="p-field p-grid" style={{paddingTop : "10px", paddingBottom : "10px"}}>
