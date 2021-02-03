@@ -58,34 +58,34 @@ class Login extends Component {
             result = <div style={{color : "red"}}>{this.state.message}</div>
         }
         return(
-            <div  className = "text-align">
-                <h1>Welcome to ADM UI Bitu</h1>
+            <div  className = "main-div">
+                <h1>Welcome to Affiliated Marketing</h1>
                 <img src = {loginImage} height="60px" width= "60px"/>
                
                 <div className="p-field p-grid" style={{paddingTop : "10px", paddingBottom : "10px"}}>
                     <div className="p-col">
-                             <input 
+                             <input id="userid-text"
                                 type="text" 
                                 value= {this.state.username} 
                                 name= "username" 
                                 onChange= {this.changeUsername}
-                                placeholder="username"
+                                placeholder="User Name"
                              />
                     </div>
                 </div>
                 <div className="p-field p-grid" style={{paddingTop : "10px", paddingBottom : "10px"}}>
                     <div className="p-col">
-                            <input 
+                            <input id="userid-text"
                                 type="password" 
                                 value= {this.state.password} 
                                 name= "password" 
                                 onChange= {this.changePassword}
-                                placeholder="password"
+                                placeholder="Password"
                             />
                     </div>
                 </div>
                 <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
-                    <button type="submit" onClick={this.submitData}> Login </button>
+                    <button className ="btn" type="submit" onClick={this.submitData}> Login </button>
                 </div>
 
                 {result}
@@ -93,6 +93,7 @@ class Login extends Component {
                 <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
                     <div> New user. <a href="#" onClick={this.handleClick}>SignUp</a> </div>
                 </div>
+               
             </div>
         )
     };
