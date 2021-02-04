@@ -59,6 +59,40 @@
     margin-bottom: .5rem;
 }
 
+.datascroller-demo .product-badge-status-outofstock {
+    color: rgb(198, 55, 55);
+    background: rgb(255, 205, 210);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+}
+
+.datascroller-demo .product-badge-status-lowstock {
+    color: rgb(138, 83, 64);
+    background: rgb(254, 237, 175);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+}
+
+.datascroller-demo .product-badge-status-instock {
+    color: rgb(37, 96, 41);
+    background: rgb(200, 230, 201);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+}
+
+
 @media screen and (max-width: 576px) {
     .datascroller-demo .product-item {
         flex-direction: column;

@@ -27,8 +27,8 @@ class SearchResponse extends Component{
                 </div>
                 <div className="product-action">
                     <span className="product-price">${data.price}</span>
-                    <Button icon="pi pi-shopping-cart" label="Add to Cart" disabled={data.inventoryStatus === 'OUTOFSTOCK'}></Button>
-                    <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span>
+                    <Button  label="Buy Now" disabled={data.inventoryStatus === 'OUTOFSTOCK'}></Button>
+                    <span className= {`product-badge-status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span>
                 </div>
             </div>
         );
