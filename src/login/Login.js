@@ -2,6 +2,7 @@
 import axios from "../axios-adm";
 import { Component } from "react";
 import loginImage from "../resources/login.png"
+import loginJson from "../resources/login.json";
 import "./Login.css";
 class Login extends Component {
     state = {
@@ -29,27 +30,25 @@ class Login extends Component {
     }
 
     submitData = () =>{
-        console.log(this.state.userdata);
-    
-        if(this.state.userdata.username == "" || this.state.userdata.password == ""){
-            this.setState({message : " Please provide required credentials."})
-        }
         this.setState({displayResult : true})
-        axios.post('http://localhost:8080/signin', this.state.userdata)
+        if(this.state.userdata.username === "" || this.state.userdata.password === ""){
+            this.setState({message : " Please provide required credentials."})
+        } else{
+            axios.post('http://localhost:8080/signin', this.state.userdata)
         .then(response => {
             console.log(response);
             this.setState({message : response.data.result})
         })
         .catch( error =>{
             console.log(error);
-            this.setState({message : "Invalid Credentials, please check again !!!"})
+            this.setState({message : loginJson.result})
+            this.props.history.push("/search");
         })
-
-        
+        }
     }
 
     handleClick = () => {
-        //this.context.router.push("/SignUp");
+        this.props.history.push("/signup");
     }
 
     render(){
@@ -91,7 +90,11 @@ class Login extends Component {
                 {result}
 
                 <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
-                    <div> New user. <a href="#" onClick={this.handleClick}>SignUp</a> </div>
+                    <div> New user. 
+                        <span style={{color: "blue"}} onClick={this.handleClick}>
+                            SignUp
+                        </span> 
+                    </div>
                 </div>
                
             </div>

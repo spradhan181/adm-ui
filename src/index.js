@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import { BrowserRouter } from 'react-router-dom';
+
+const app = (
+  <BrowserRouter>
+      <App />
+  </BrowserRouter>
 );
+
+ReactDOM.render( app, document.getElementById( 'root' ) );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
