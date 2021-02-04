@@ -6,9 +6,10 @@
         "rating": 5,
         "category":"Mobile",
         "price": "89",
-        "inventoryStatus" : "OUTOFSTOCK",
+        "inventoryStatus" : "INSTOCK",
         "ecommerceName": "Flipkart",
-        "maxPrice" : "100"
+        "maxPrice" : "100",
+        "link" : "https://www.flipkart.com/apple-iphone-7-black-32-gb/p/itmen6daftcqwzeg?pid=MOBEMK62PN2HU7EE&lid=LSTMOBEMK62PN2HU7EEINTGNU&marketplace=FLIPKART&srno=s_1_2&otracker=AS_QueryStore_OrganicAutoSuggest_2_8_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_2_8_na_na_na&fm=SEARCH&iid=e99b387e-a189-4366-b6e1-5e65ea0057b4.MOBEMK62PN2HU7EE.SEARCH&ppt=hp&ppn=homepage&ssid=2dcd8uw2io0000001612465434002&qH=5d05ddab4536111a"
     },
     {
         "image":"https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-6-1.jpg",
@@ -19,7 +20,9 @@
         "price": "89",
         "inventoryStatus" : "INSTOCK",
         "ecommerceName": "Amazon",
-        "maxPrice" : "100"
+        "maxPrice" : "100",
+        "link" : "https://www.amazon.in/Apple-iPhone-Black-32GB-Storage/dp/B01LZKSVRB/ref=asc_df_B01LZKSVRB/?tag=googleshopdes-21&linkCode=df0&hvadid=406506081119&hvpos=&hvnetw=g&hvrand=11820712948002678472&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062136&hvtargid=pla-309593043520&psc=1&ext_vrnc=hi"
+   
     },
 
     {
@@ -29,9 +32,11 @@
         "rating": 3,
         "category":"Mobile",
         "price": "89",
-        "inventoryStatus" : "LOWSTOCK",
+        "inventoryStatus" : "OUTOFSTOCK",
         "ecommerceName": "Reliance Digitals",
-        "maxPrice" : "100"
+        "maxPrice" : "100",
+        "link" : "https://www.amazon.in/Apple-iPhone-Black-32GB-Storage/dp/B01LZKSVRB/ref=asc_df_B01LZKSVRB/?tag=googleshopdes-21&linkCode=df0&hvadid=406506081119&hvpos=&hvnetw=g&hvrand=11820712948002678472&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062136&hvtargid=pla-309593043520&psc=1&ext_vrnc=hi"
+   
     },
     {
         "image":"",

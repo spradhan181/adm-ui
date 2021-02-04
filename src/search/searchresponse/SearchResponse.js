@@ -11,6 +11,10 @@ class SearchResponse extends Component{
         products: data
     }
 
+    redirectToSite = (link) => {
+        console.log(link);
+        window.open(link);
+    }
     itemTemplate = (data) => {
         return (
             <div className="product-item">
@@ -27,7 +31,7 @@ class SearchResponse extends Component{
                 </div>
                 <div className="product-action">
                     <span className="product-price">${data.price}</span>
-                    <Button  label="Buy Now" disabled={data.inventoryStatus === 'OUTOFSTOCK'}></Button>
+                    <Button  label="Buy Now" disabled={data.inventoryStatus === 'OUTOFSTOCK'} onClick={() => {this.redirectToSite(data.link)}}></Button>
                     <span className= {`product-badge-status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span>
                 </div>
             </div>
