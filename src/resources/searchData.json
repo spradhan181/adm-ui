@@ -1,0 +1,81 @@
+[
+    {
+        "image":"https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-6-1.jpg",
+        "name": "Iphone 6s",
+        "description" :"Product Description",
+        "rating": 5,
+        "category":"Mobile",
+        "price": "89",
+        "inventoryStatus" : "INSTOCK",
+        "ecommerceName": "Flipkart",
+        "maxPrice" : "100"
+    },
+    {
+        "image":"https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-6-1.jpg",
+        "name": "IPhone 6s",
+        "description" :"Product Description",
+        "rating": 5,
+        "category":"Mobile",
+        "price": "89",
+        "inventoryStatus" : "INSTOCK",
+        "ecommerceName": "Amazon",
+        "maxPrice" : "100"
+    },
+
+    {
+        "image":"https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-7-1.jpg",
+        "name": "IPhone 7",
+        "description" :"Product Description",
+        "rating": 5,
+        "category":"Mobile",
+        "price": "89",
+        "inventoryStatus" : "INSTOCK",
+        "ecommerceName": "Reliance Digitals",
+        "maxPrice" : "100"
+    },
+    {
+        "image":"",
+        "name": "Blue EarPods",
+        "description" :"Product Description",
+        "rating": 5,
+        "category":"Mobile",
+        "price": "89",
+        "inventoryStatus" : "INSTOCK"
+    },
+    {
+        "image":"",
+        "name": "Green EarPods",
+        "description" :"Product Description",
+        "rating": 5,
+        "category":"Mobile",
+        "price": "89",
+        "inventoryStatus" : "INSTOCK"
+    },
+    {
+        "image":"",
+        "name": "Blue EarPods",
+        "description" :"Product Description",
+        "rating": 5,
+        "category":"Mobile",
+        "price": "89",
+        "inventoryStatus" : "INSTOCK"
+    },
+    {
+        "image":"",
+        "name": "Green EarPods",
+        "description" :"Product Description",
+        "rating": 5,
+        "category":"Mobile",
+        "price": "89",
+        "inventoryStatus" : "INSTOCK"
+    },
+    {
+        "image":"",
+        "name": "Blue EarPods",
+        "description" :"Product Description",
+        "rating": 5,
+        "category":"Mobile",
+        "price": "89",
+        "inventoryStatus" : "INSTOCK"
+    }
+]
