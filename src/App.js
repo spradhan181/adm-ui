@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import SignUp from "./signup/SignUp";
 import Search from "./search/Search"
 
+
 function App() {
   return (
     <div>

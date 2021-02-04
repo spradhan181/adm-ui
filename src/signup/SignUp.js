@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./Signup.css";
 
 class SignUp extends Component{
 
@@ -44,9 +45,9 @@ class SignUp extends Component{
 
     render(){
         return(
-            <div>
-                <div className = "main-div">
-                    <h1>Signup to Affiliated Market</h1>
+            <div className="signup-div">
+                <div className = "">
+                    <h1>Create </h1>
                     <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
                     <div >
                         <span style={{paddingRight:"100px", textAlign:"left"}}>
@@ -111,7 +112,7 @@ class SignUp extends Component{
                         </div>
                     </div>
                     <div style={{paddingTop : "30px", paddingBottom : "10px"}}>
-                        <button className ="btn" type="submit" onClick={this.submitForm}> SignUp </button>
+                        <button id="btn"className ="btn" type="submit" onClick={this.submitForm}> Create Account </button>
                     </div>
                 </div>
             </div>
