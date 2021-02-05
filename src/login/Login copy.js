@@ -5,11 +5,10 @@ import loginImage from "../resources/login.png";
 import affiliateimg from "../resources/affiliate.png";
 import brandlogo from"../resources/ADM-logos_black.png";
 import brandlogo1 from"../resources/ADM-logos_transparent.png";
-import brandlogo2 from"../resources/hand.png";
-import brandlogo3 from "../resources/carts.png"
+import brandlogo2 from"../resources/ADM-logo1.jpeg";
 import loginJson from "../resources/login.json";
 import "./Login.css";
-import { FaFacebook,FaTwitter,FaLock,FaUser,FaInstagram,FaEnvelope} from "react-icons/fa";
+import { FaFacebook,FaTwitter,FaLock,FaUser,FaInstagram} from "react-icons/fa";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -17,16 +16,17 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 class Login extends Component {
     state = {
         userdata:{
-            email: "",
+            username: "",
             password: ""
         },
         message: "",
         displayResult: false
     }
-    
+
+
     changeUsername = (event) =>{
         let data = {...this.state.userdata}
-        data.email  = event.target.value;
+        data.username  = event.target.value;
         this.setState({userdata : data})
         this.setState({displayResult : false})
     }
@@ -40,23 +40,18 @@ class Login extends Component {
 
     submitData = () =>{
         this.setState({displayResult : true})
-        if(this.state.userdata.email === "" || this.state.userdata.password === ""){
+        if(this.state.userdata.username === "" || this.state.userdata.password === ""){
             this.setState({message : " Please provide required credentials."})
-        } 
-        else
-        {
+        } else{
             axios.post('http://localhost:8080/signin', this.state.userdata)
-             .then(response => {
+        .then(response => {
             console.log(response);
-            if(response.data.result === "Success"){
-                this.props.history.push("/search");
-            } else if(response.data.result === "Invalid"){
-                this.setState({message : "Invalid username or password"})  
-            }
+            this.setState({message : response.data.result})
         })
         .catch( error =>{
             console.log(error);
-            this.setState({message : error})  
+            this.setState({message : loginJson.result})
+            this.props.history.push("/search");
         })
         }
     }
@@ -75,16 +70,15 @@ class Login extends Component {
         }
         return(
         <div className="main-div-1">
-            
+           
            <div>
-             <nav style={{padding:"0px"}}className="navbar navbar-expand-lg navbar-dark bg-dark">
-                 <a className="navbar-brand" href="#" style={{margin:"0px 5px"}}>MonkeyMart</a>
-                
+             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <img src={ brandlogo } height = "50px" width = "100px" />
                  <span className="navbar-brand">
                  </span>
                     <ul className="navbar-nav">
                        <li className="nav-item">
-                       <a href="#contact-page" className="nav-link" >Contact</a>
+                             <a href="#contact-page" className="nav-link" >Contact</a>
                        </li>
                        <li className="nav-item">
                              <span className="nav-link" >Pricing</span>
@@ -94,36 +88,20 @@ class Login extends Component {
                        </li>
                     </ul>
              </nav>
-             <h5>WELCOME TO AFFILIATED DIGITAL MARKETING</h5>
             </div>
-            <div className="description-left">
-            
-            <p style={{marginTop:"30px"}}>
-                <i>"Affiliate marketing has made businesses millions and ordinary people millionaires."</i> 
-            </p>
-            <img style={{height:"150px",width:"150px", marginTop:"40px"}} src ={brandlogo2} alt="moneyimg"/>
-
-            </div>
-
-            <div className="description-right ">
-            <img style={{height:"150px",width:"150px",marginBottom:"30px"}} src ={brandlogo3} alt="moneyimg"/>
-
-            <p>
-                <em>"Search for your electronic products with best <b>lowest</b> price, comparision from diffrent popular <b>E-commerce</b> sites for best deals,get an extra <b>10% discount</b> from our site for every purchase!!!"</em>
-            </p>
+            <h3>WELCOME TO AFFILIATED DIGITAL MARKETING</h3>
+          
            
-            </div>
-            
             <div  className = "main-div-2">
-                <h3></h3>
+                
                 <img className="brand-logo"src = {loginImage}  alt= "Not Found" height="60px" width= "60px" margin-left="20px"/>
-               
+                
                 <div className="p-field p-grid" style={{paddingTop : "30px", paddingBottom : "10px"}}>
                     <div className="p-col">
                     <i className="login-icon" ><FaUser/></i>
                      <input id="userid-text"
                                 type="text" 
-                                value= {this.state.email} 
+                                value= {this.state.username} 
                                 name= "username" 
                                 onChange= {this.changeUsername}
                                 placeholder="User Name"
@@ -145,20 +123,21 @@ class Login extends Component {
                 <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
                     <button className ="btn" type="submit" onClick={this.submitData}> Login </button>
                 </div>
-                {result}
                 <div>
                 <span>or</span>
                 <hr className="hr"/>
                 </div>
 
+                {result}
+
                 <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
                     <div> <span>Don't have an account ? </span> 
                         <span className="span"  onClick={this.handleClick}>
-                            <b>Create One.</b>
+                            Create One.
                         </span> 
                     </div>
                     <div className="span" s onClick={this.redirectToForgotPassword}>
-                           <b> Forgot Password ?</b>
+                            Forgot Password ?
                     </div>
                 </div>
                 <div>
@@ -166,13 +145,6 @@ class Login extends Component {
                 </div>
               </div>
               < div id="contact-page">
-              <span style={{margin:"auto"}}><FaEnvelope/>
-                      <a style={{margin:"0px 5px"}} href="https://mail.google.com/mail/u/0/#inbox" alt="Facebook">
-                             premprakash.jena@gmail.com</a>
-                             <img src = {brandlogo1} style={{height:"100px"  ,width:"100px"}}/>
-                             <span>
-                     <br/>         
-                      </span> 
                     <a href="https://www.instagram.com/" alt="Facebook">
                              <span className="social-icons"><FaInstagram/></span>
                     </a>
@@ -182,10 +154,13 @@ class Login extends Component {
                     <a href="https://twitter.com/?lang=en" alt="Facebook">
                             <span className="social-icons"><FaTwitter/></span>
                     </a>
-                     <p style={{marginBottom:"0px",paddingBottom:"5px"}}>copyright@2021</p>
-                      </span>
-                      
-                     
+                <br/>
+                     <p style={{marginTop: "15px", marginBottom:"0px"}}>copyright@2021</p>
+                      <span>email: </span> 
+                      <a href="https://mail.google.com/mail/u/0/#inbox" alt="Facebook">
+                             premprakash.jena@gmail.com
+                      </a>
+                      <img src = {brandlogo1} style={{height:"100px"  ,width:"100px"}}/>
                 </div>
         </div>
         )

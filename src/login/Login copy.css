@@ -1,50 +1,30 @@
 .main-div-2{
     text-align: center;
     background-image: linear-gradient(to bottom right,#5db4cc,#8ab4c0);
-    border-radius: 2%;
+    border-radius: 4%;
     border: 4px solid rgb(14, 165, 185);
-    width: 30%;
+    width: 40%;
     margin:auto;
-    margin-top: 30px;
+    margin-top: 50px;
     float: center;
      
 }
 .main-div-1{
-    background-image: linear-gradient(to bottom right,#e9ebf3,#f0f1f5 );
+    background-image: linear-gradient(to bottom right,#92949b,#ccced8 );
     
 }
-h5{
+h1{
     font-family: 'Montserrat', sans-serif;
-    color:#000000f1;
-    padding:5px auto;
-    width:auto;
-    margin:10px auto;
-    text-align: center;
+    color:#161d6f;
+    padding-top: 35px;
 }
-.description-left{
-    position:absolute;
-    margin: 40px 0 0 33px;
-    width: 30%;
-    height: 50%;
-}
-.description-right{
-    position: relative;
-    margin: 300px 33px 0 0;
-    float: right;
-    width: 30%;
-    height: 50%;
-
-}
-
 #userid-text{
     font-family:'Montserrat', sans-serif;
     height: 32px;
-    width: 70%;
+    width: 50%;
     text-align: center;
     border-radius: 15px;
     border: 2px solid #ccced8 ;
-    border:none;
-    border-bottom: 1px solid;
 }
 .btn {
     background: #4fbadb;
@@ -89,20 +69,21 @@ h5{
       margin-left: 20px;
       text-align: center;
   }
+ 
   .navbar-nav{
       margin-left: auto;
   }
   #contact-page{
-    position: relative;
-    padding: 0;
-    color: blanchedalmond;
-    
-    background-image: linear-gradient(to bottom right, #406180,#081635 );
-}
-.social-icons{
-    margin: 10px;
-    padding-bottom: 20px;
-}
+      padding: 5% 15%;
+      color: blanchedalmond;
+      padding-top: 20px;
+      padding-bottom: 10px;
+      background-image: linear-gradient(to bottom right, #1574ce,#020918 );
+  }
+  .social-icons{
+      margin: 10px;
+      padding-bottom: 20px;
+  }
   .social-icons:hover{
       color: rgb(6, 6, 15);
   }
@@ -117,7 +98,4 @@ h5{
   .login-icon{
       position: absolute;
       margin-left: 10px;
-  }
-  .navbar:hover{
-      background: dark;
   }

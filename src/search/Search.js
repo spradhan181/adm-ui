@@ -3,6 +3,9 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import SearchResponse from "./searchresponse/SearchResponse";
+import brandlogo from"../resources/ADM-logos_black.png";
+import { FaSearch,FaUser  } from "react-icons/fa";
+import "./Search.css";
 
 class Search extends Component{
 
@@ -63,25 +66,43 @@ class Search extends Component{
         }
         return(
             <div>
+                <nav>
+                <nav style={{padding:"0px"}}className="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a className="navbar-brand" href="#">monkeyMart</a>
+                 <span className="navbar-brand">
+                 </span>
+                    <ul className="navbar-nav">
+                       <li className="nav-item">
+                        <span className="nav-link">
+                        <span><FaUser/></span> Welcome Mr. Premprakash Jena
+                        </span>
+                       </li>
+                       <li className="nav-item">
+                             <span className="nav-link" >Pricing</span>
+                       </li>
+                       <li className="nav-item">
+                             <span className="nav-link" >Logout</span>
+                       </li>
+                    </ul>
+             </nav>
+                </nav>
                 <h1>Find Your Best Deals here!!</h1>
                 <div>
                     <span>
-                        <Dropdown value={this.state.searchData.selectedCategory} 
+                        <Dropdown id="category" value={this.state.searchData.selectedCategory} 
                             options={this.state.categories} 
                             onChange={this.onCityChange} 
                             optionLabel="name" 
                             placeholder="Select a Category" />
                     </span>
-                    <span style={{paddingLeft : "10px"}}>
-                        <InputText value={this.state.searchData.searchValue} 
-                            placeholder= "Search an item"
+                    <span >
+                    <InputText  id="search-area" value={this.state.searchData.searchValue} 
+                            placeholder= "Search for products like smart phones,tvs etc..."
                             onChange={this.setSearchDataValue }/>
+                                 <Button style={{border:"1px solid black"}} icon="pi pi-search" className="p-button-warning" onClick={this.submit}></Button>
                     </span>
                     <span style={{paddingLeft : "10px"}}>
-                        <Button label="Search" className="p-button-outlined"  onClick={this.submit}/>
-                    </span>
-                    <span style={{paddingLeft : "10px"}}>
-                        <Button label="Clear" className="p-button-outlined" onClick={this.clear}/>
+                        <Button id="clear" label="Clear" className="p-button-outlined" onClick={this.clear}/>
                     </span>
                 </div>
                 
