@@ -1,18 +1,16 @@
 .main-div-2{
     text-align: center;
-    background-image: linear-gradient(to bottom right, #36d1dc,#5b86e5 );
+    background-image: linear-gradient(to bottom right,#5b86e5,#aa1478 );
     border-radius: 2%;
     border: 4px solid rgb(14, 165, 185);
     width: 45%;
     margin-left: 28%;
-    margin-top: 5%;
+    margin-top: 50px;
     float: center;
-    
-
      
 }
 .main-div-1{
-    background-image: linear-gradient(to bottom right, #36d1dc,#5b86e5 );
+    background-image: linear-gradient(to bottom right, #afcad4,#143d96 );
     
 }
 h1{
@@ -67,7 +65,7 @@ h1{
   }
   .brandlogo{
       height: 40px;
-      width: 40px;
+      width: 150px;
       margin-left: 20px;
       text-align: center;
   }
@@ -77,5 +75,24 @@ h1{
   .contact-page{
       padding: 5% 15%;
       color: blanchedalmond;
-      background-color: #3483eb;
+      background-image: linear-gradient(to bottom right, #1574ce,#020918 );
+  }
+  .social-icons{
+      margin: 10px;
+      padding-bottom: 20px;
+  }
+  .social-icons:hover{
+      color: rgb(6, 6, 15);
+  }
+  .span:hover{
+      color: blanchedalmond;
+  }
+  .hr{
+    border:  #EAF6F6 6px;
+    width: 40%;
+    margin: 20px auto;
+  }
+  .login-icon{
+      position: absolute;
+      margin-left: 10px;
   }

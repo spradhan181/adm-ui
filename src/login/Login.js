@@ -3,10 +3,12 @@ import axios from "../axios-adm";
 import { Component } from "react";
 import loginImage from "../resources/login.png";
 import affiliateimg from "../resources/affiliate.png";
-import affiliatelogo from"../resources/worldwide.png"
+import brandlogo from"../resources/ADM-logos_black.png"
 import loginJson from "../resources/login.json";
 import "./Login.css";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaFacebook,FaTwitter,FaLock,FaUser,FaInstagram} from "react-icons/fa";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 
 
 class Login extends Component {
@@ -69,8 +71,8 @@ class Login extends Component {
            
            <div>
              <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <img src={ brandlogo } height = "50px" width = "100px" />
                  <span className="navbar-brand">
-                    <img className="brandlogo" src ={affiliatelogo} alt= "Not Found"/>
                  </span>
                     <ul className="navbar-nav">
                        <li className="nav-item">
@@ -88,12 +90,13 @@ class Login extends Component {
             <h1>WELCOME TO AFFILIATED DIGITAL MARKETING</h1>
            
             <div  className = "main-div-2">
-                <h3>Continue to LogIn</h3>
-                <img className="brandlogo"src = {loginImage}  alt= "Not Found" height="60px" width= "60px" margin-left="20px"/>
+                <h3></h3>
+                <img className="brand-logo"src = {loginImage}  alt= "Not Found" height="60px" width= "60px" margin-left="20px"/>
                
                 <div className="p-field p-grid" style={{paddingTop : "30px", paddingBottom : "10px"}}>
                     <div className="p-col">
-                             <input id="userid-text"
+                    <i className="login-icon" ><FaUser/></i>
+                     <input id="userid-text"
                                 type="text" 
                                 value= {this.state.username} 
                                 name= "username" 
@@ -104,7 +107,7 @@ class Login extends Component {
                 </div>
                 <div className="p-field p-grid" style={{paddingTop : "10px", paddingBottom : "10px"}}>
                     <div className="p-col">
-                            
+                    <i className="login-icon"><FaLock/></i>
                             <input id="userid-text"
                                 type="password" 
                                 value= {this.state.password} 
@@ -115,22 +118,22 @@ class Login extends Component {
                     </div>
                 </div>
                 <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
-                    <FaGithub/><button className ="btn" type="submit" onClick={this.submitData}> Login </button>
+                    <button className ="btn" type="submit" onClick={this.submitData}> Login </button>
                 </div>
                 <div>
                 <span>or</span>
-                <hr/>
+                <hr className="hr"/>
                 </div>
 
                 {result}
 
                 <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
-                    <div> <span>Don't have account? </span> 
-                        <span className="span" style={{color: "blue"}} onClick={this.handleClick}>
-                            Create One
+                    <div> <span>Don't have an account ? </span> 
+                        <span className="span"  onClick={this.handleClick}>
+                            Create One.
                         </span> 
                     </div>
-                    <div className="span" style={{color: "blue"}} onClick={this.redirectToForgotPassword}>
+                    <div className="span" s onClick={this.redirectToForgotPassword}>
                             Forgot Password ?
                     </div>
                 </div>
@@ -139,9 +142,22 @@ class Login extends Component {
                 </div>
               </div>
               < div className="contact-page">
-              
-                    <span>Copyright@Adm</span> 
-                    <i className="fab fa-twitter"></i>
+                    <a href="https://www.instagram.com/" alt="Facebook">
+                             <span className="social-icons"><FaInstagram/></span>
+                    </a>
+                   <a href="https://www.facebook.com/" alt="Facebook">
+                            <span className="social-icons"><FaFacebook/></span>
+                    </a>  
+                    <a href="https://twitter.com/?lang=en" alt="Facebook">
+                            <span className="social-icons"><FaTwitter/></span>
+                    </a>
+                <br/>
+                     <p style={{marginTop: "15px"}}>copyright@2021</p>
+                      <span>Email: </span> 
+                      <a href="https://mail.google.com/mail/u/0/#inbox" alt="Facebook">
+                             premprakash.jena@gmail.com
+                      </a>
+                   
                 </div>
         </div>
         )

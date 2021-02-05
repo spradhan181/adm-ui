@@ -63,7 +63,7 @@ class Search extends Component{
         }
         return(
             <div>
-                <h1>Welcome To Affiliated Market</h1>
+                <h1>Find Your Best Deals here!!</h1>
                 <div>
                     <span>
                         <Dropdown value={this.state.searchData.selectedCategory} 
