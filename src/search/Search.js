@@ -16,7 +16,8 @@ class Search extends Component{
             selectedCategory : "",
             searchValue: ""
         },
-        displayResult: false
+        displayResult: false,
+        displayError: false,
         
     }
 
@@ -24,27 +25,41 @@ class Search extends Component{
         let data = {...this.state.searchData}
         data.searchValue = event.target.value;
         this.setState({searchData : data});
+        this.setState({displayError : false})
     }
 
     onCityChange = (e) => {
         let data = {...this.state.searchData}
         data.selectedCategory = e.value;
         this.setState({searchData : data});
+        this.setState({displayError : false})
     }
 
-    submit = () =>{
-        console.log(this.state.searchData)
-        this.setState({displayResult : true})
+    submit = (event) =>{
+       event.preventDefault();
+        if(this.state.searchData.searchValue === "" ||
+            this.state.searchData.selectedCategory === ""){
+                this.setState({displayError : true})
+        }else{
+            this.setState({displayResult : true})
+        }
     }
 
     clear = () =>{
-        this.setState({displayResult : false , searchData : ""})
+        this.setState({displayResult : false , searchData : {}})
+        let clearedSearchData = {...this.state.searchData};
+        clearedSearchData.searchValue = "";
+        clearedSearchData.selectedCategory= ""
+        this.setState({searchData : clearedSearchData});
+        this.setState({displayError : false})
     }
 
     render(){
         let showResult = null;
-        if(this.state.displayResult){
-            showResult = <SearchResponse />
+        if(this.state.displayResult && !this.state.displayError){
+            showResult = <SearchResponse searchData={this.state.searchData}/>
+        }else if(this.state.displayError){
+            showResult = <div style = {{color: "red"}}>Please select a category and provide search item</div>;
         }
         return(
             <div>
@@ -73,7 +88,6 @@ class Search extends Component{
                 <div style={{paddingTop: "40px"}}>
                     {showResult}
                 </div>
-
             </div>
         )
     }
