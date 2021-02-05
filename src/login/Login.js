@@ -6,8 +6,7 @@ import affiliateimg from "../resources/affiliate.png";
 import affiliatelogo from"../resources/worldwide.png"
 import loginJson from "../resources/login.json";
 import "./Login.css";
-import { FaGithub,FaFacebook,faLock,FaUser } from "react-icons/fa";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FaGithub } from "react-icons/fa";
 
 
 class Login extends Component {
@@ -56,6 +55,9 @@ class Login extends Component {
     handleClick = () => {
         this.props.history.push("/signup");
     }
+    redirectToForgotPassword = () =>{
+        this.props.history.push("/forgot")
+    }
 
     render(){
         let result = null;
@@ -67,18 +69,18 @@ class Login extends Component {
            
            <div>
              <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                 <a className="navbar-brand">
-                    <img className="brandlogo" src ={affiliatelogo}/>
-                 </a>
+                 <span className="navbar-brand">
+                    <img className="brandlogo" src ={affiliatelogo} alt= "Not Found"/>
+                 </span>
                     <ul className="navbar-nav">
                        <li className="nav-item">
-                             <a className="nav-link" href="">Contact</a>
+                             <span className="nav-link" >Contact</span>
                        </li>
                        <li className="nav-item">
-                             <a className="nav-link" href="">Pricing</a>
+                             <span className="nav-link" >Pricing</span>
                        </li>
                        <li className="nav-item">
-                             <a className="nav-link" href="">Download</a>
+                             <span className="nav-link" >Download</span>
                        </li>
                     </ul>
              </nav>
@@ -87,11 +89,10 @@ class Login extends Component {
            
             <div  className = "main-div-2">
                 <h3>Continue to LogIn</h3>
-                <img classname="brandlogo"src = {loginImage} height="60px" width= "60px" margin-left="20px"/>
+                <img className="brandlogo"src = {loginImage}  alt= "Not Found" height="60px" width= "60px" margin-left="20px"/>
                
-                <div className="p-field p-grid" style={{paddingTop : "10px", paddingBottom : "10px"}}>
+                <div className="p-field p-grid" style={{paddingTop : "30px", paddingBottom : "10px"}}>
                     <div className="p-col">
-                            <faUser/>
                              <input id="userid-text"
                                 type="text" 
                                 value= {this.state.username} 
@@ -124,20 +125,23 @@ class Login extends Component {
                 {result}
 
                 <div style={{paddingTop : "10px", paddingBottom : "10px"}}>
-                    <div> <span>Donn't have ccount? </span> 
-                        <a className="span" style={{color: "blue"}} onClick={this.handleClick}>
+                    <div> <span>Don't have account? </span> 
+                        <span className="span" style={{color: "blue"}} onClick={this.handleClick}>
                             Create One
-                        </a> 
+                        </span> 
+                    </div>
+                    <div className="span" style={{color: "blue"}} onClick={this.redirectToForgotPassword}>
+                            Forgot Password ?
                     </div>
                 </div>
                 <div>
-                    <img src = {affiliateimg} height="200px"/>
+                    <img src = {affiliateimg} height="200px" alt= "Not Found" />
                 </div>
               </div>
               < div className="contact-page">
               
                     <span>Copyright@Adm</span> 
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                 </div>
         </div>
         )

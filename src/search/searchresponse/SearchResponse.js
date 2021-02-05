@@ -4,11 +4,15 @@ import { Button } from 'primereact/button';
 import { Rating } from 'primereact/rating';
 import data from "../../resources/searchData.json";
 import './SearchResponse.css';
-import pic from "../../resources/login.png";
 class SearchResponse extends Component{
 
     state ={
-        products: data
+        products: ""
+    }
+    componentDidMount(){
+        console.log(this.props.searchData);
+        console.log(this.props.searchData.selectedCategory.code);
+        this.setState({products : data});
     }
 
     redirectToSite = (link) => {
@@ -27,10 +31,10 @@ class SearchResponse extends Component{
                 </div>
                 <div className="product-detail">
                     <div className="product-name">{data.ecommerceName}</div>
-                    <div className="product-description">MRP : ${data.maxPrice}</div>
+                    <div className="product-description">MRP : Rs. {data.maxPrice}</div>
                 </div>
                 <div className="product-action">
-                    <span className="product-price">${data.price}</span>
+                    <span className="product-price">Rs. {data.price}</span>
                     <Button  label="Buy Now" disabled={data.inventoryStatus === 'OUTOFSTOCK'} onClick={() => {this.redirectToSite(data.link)}}></Button>
                     <span className= {`product-badge-status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span>
                 </div>

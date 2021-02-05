@@ -42,6 +42,9 @@ class SignUp extends Component{
     submitForm = () => {
         console.log(this.state.userFormData)
     }
+    redirectBack = () => {
+        this.props.history.push("/")
+    }
 
     render(){
         return(
@@ -113,6 +116,9 @@ class SignUp extends Component{
                     </div>
                     <div style={{paddingTop : "30px", paddingBottom : "10px"}}>
                         <button id="btn"className ="btn" type="submit" onClick={this.submitForm}> Create Account </button>
+                            <span style={{paddingLeft: "10px"}}>
+                                <button id="btn"className ="btn" type="button" onClick={this.redirectBack}> Back </button>
+                            </span>
                     </div>
                 </div>
             </div>
