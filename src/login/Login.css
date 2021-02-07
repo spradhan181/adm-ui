@@ -10,6 +10,9 @@
      
 }
 .main-div-1{
+    position: absolute;
+    
+    width: 100%;
     background-image: linear-gradient(to bottom right,#e9ebf3,#f0f1f5 );
     
 }

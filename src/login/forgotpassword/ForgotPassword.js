@@ -2,6 +2,11 @@ import {Component} from 'react'
 import { InputText } from 'primereact/inputtext';
 import axios from "../../axios-adm";
 import { Button } from 'primereact/button';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import "./forgotpassword.css";
+import brandlogo from "../../resources/monkeyMart-black.png";
+import brandlogo1 from "../../resources/monkeyMart-logos_transparent.png";
+
 class ForgotPassword extends Component{
 
     state = {
@@ -15,7 +20,8 @@ class ForgotPassword extends Component{
         displayResult: false,
         showPassword: false,
         showSuccessMessage: false,
-        message: ""
+        message: "",
+        actionInProgress: false
     }
 
     changeValueEmail =(event) =>{
@@ -30,29 +36,54 @@ class ForgotPassword extends Component{
         this.setState({recoverRequest : data})
     }
 
-    submit = (event) =>{
+    verifyUserName = (event) =>{
         event.preventDefault();
         this.setState({showPassword : false});
          if(this.state.recoverRequest.email === ""){
             this.setState({displayError : true})
             this.setState({message : "Please username to proceed"})
          }else{
+                this.setState({actionInProgress : true})
                 axios.post('http://localhost:8080/recover', this.state.recoverRequest)
                 .then(response => {
                 console.log(response);
                 if(response.data.result === "Success"){
-                    this.setState({displayResult : true})
+                    //this.setState({displayResult : true})
+                    this.sendEmail();
                 } else if(response.data.result === "Invalid"){
                     this.setState({displayError : true})
                     this.setState({message : "Username not found !!"})  
-                    this.setState({displayResult : false})
+                    this.setState({displayResult : false, actionInProgress : false})
                 }
             })
             .catch( error =>{
                 console.log(error);
-                this.setState({message : error})  
+                this.setState({message : error, actionInProgress: false})  
             })
          }
+     }
+
+     sendEmail = () =>{
+        axios.post('http://localhost:8080/sendemail', {
+            toEmailAddress : this.state.recoverRequest.email,
+            fromEmailAddress : "monkeymart@gmail.com",
+            subject:"One Time Password"
+        })
+        .then(response => {
+        console.log(response);
+        if(response.data === "Success"){
+            this.setState({displayResult : true})
+            this.setState({actionInProgress : false})
+        } else if(response.data.result === "Failure"){
+            this.setState({displayError : true})
+            this.setState({message : "Username not found !!"})  
+            this.setState({displayResult : false, actionInProgress: false})
+        }
+    })
+    .catch( error =>{
+        console.log(error);
+        this.setState({message : error, actionInProgress: false})  
+    })
      }
 
      updatePassword = () => {
@@ -93,11 +124,22 @@ class ForgotPassword extends Component{
      verifyOtp = () =>{
          if(this.state.recoverRequest.otp === ""){
             this.setState({displayError: true, message : "Provide OTP to proceed"})
-         }else if(this.state.recoverRequest.otp != "123456"){ 
-            this.setState({displayError: true, message : "Invalid OTP"})
          }else{
-            this.setState({showPassword : true, displayResult : false , displayError: false });
-         }  
+                    this.setState({actionInProgress : true})
+                    axios.post('http://localhost:8080/recover', this.state.recoverRequest)
+                    .then(response => {
+                    console.log(response);
+                    if(response.data.result === "Success"){
+                        this.setState({showPassword : true, displayResult : false , displayError: false, actionInProgress: false});
+                    } else if(response.data.result === "Invalid"){
+                        this.setState({displayError: true, message : "Invalid OTP", actionInProgress: false})
+                    }
+                })
+                .catch( error =>{
+                    console.log(error);
+                    this.setState({message : error, actionInProgress: false})  
+                })
+         }
      }
 
      changeNewPassword = (event) =>{
@@ -117,18 +159,22 @@ class ForgotPassword extends Component{
      }
     render(){
 
+        <div>
+           <h1>hello</h1> 
+        </div>
+
         let renderView = 
-        <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
-             <InputText 
+        <div style={{paddingTop: "10px", paddingBottom: "10px",}}>
+             <InputText style={{border:"1px solid black", width:"300px"}} 
                    value={this.state.recoverRequest.email} 
                    placeholder= "Enter email address"
                    onChange={this.changeValueEmail }/>
     
             <span style={{paddingLeft : "10px"}}>
-                <Button label="Search" className="p-button-outlined" disabled ={this.state.showSuccessMessage} onClick={this.submit}/>
+                <Button style={{color:"black",height:"25px",fontSize:"0.85rem"}} label="Search" className="p-button-outlined" disabled ={this.state.showSuccessMessage} onClick={this.verifyUserName}/>
             </span>
             <span style={{paddingLeft : "10px"}}>
-                <Button label="Clear" className="p-button-outlined" onClick={this.clear}/>
+                <Button style={{color:"black",height:"25px",backgroundColor:"white",fontSize:"0.85rem"}} label="Clear" className="p-button-outlined" onClick={this.clear}/>
             </span>
          </div>;
 
@@ -156,11 +202,17 @@ class ForgotPassword extends Component{
         } 
 
         let showResult = null;
-        if(this.state.displayResult){
+        if(this.state.actionInProgress){
+            showResult = 
+            <div style={{paddingTop: "20px"}}>
+                <ProgressSpinner style={{width: '50px', height: '50px'}} strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"/>
+            </div>
+        }
+        else if(this.state.displayResult){
             showResult = <div style={{paddingTop: "20px"}}>
                 <div>
                     <div>
-                        <span>You will receive an otp on <b> {this.state.recoverRequest.email} </b> </span>
+                        <span>We have sent an OTP to your registered emial address. </span>
                     </div>
                         <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
                             <span>
@@ -192,13 +244,47 @@ class ForgotPassword extends Component{
         }
         return(
             <div>
-                <h1>Password recovery page</h1>
-                <div style={{paddingTop: "20px"}}>
+                <div style={{position: "relative"}}>
+                     <nav style={{padding:"0px", position:"fixed",width:"100%"}}className="navbar navbar-expand-lg navbar-dark bg-dark">
+                     <img style={{height:"80px" , width:"90px",marginLeft:"20px"}} src={brandlogo1} alt="brandlogo "/>
+
+                        
+                
+                             <ul className="navbar-nav">
+                                  <li className="nav-item">
+                                      <span className="nav-link" >Help</span>
+                                 </li>
+                                  <li className="nav-item">
+                                  <a href="http://localhost:3000/" className="nav-link" >Log In</a>
+                                     
+                                 </li>
+                             </ul>
+                     </nav>
+
+                </div>
+                
+                
+                <div className="first-div" style={{paddingTop: "20px"}}>
+                <h6 style={{fontFamily:"'Montserrat', sans-serif"}}><b>Find Your Account</b></h6>
+                <hr />
                     {renderView}
                     {showResult}
                     {errormessage}
                     {showSuccessMessage}
                 </div>
+                <div className="footer">
+                
+                
+                <span>
+                <img style={{height:"140px" , width:"140px"}} src={brandlogo} alt="brandlogo "/>
+                </span>
+                <span style={{fontSize:"12px"}}>
+                     <b>© 2021.  </b>     
+              </span>
+                
+                </div>
+              
+                
             </div>
         );
     }

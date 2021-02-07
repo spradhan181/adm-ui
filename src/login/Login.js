@@ -1,13 +1,15 @@
-
 import axios from "../axios-adm";
 import { Component } from "react";
 import loginImage from "../resources/login.png";
 import affiliateimg from "../resources/affiliate.png";
-import brandlogo from"../resources/ADM-logos_black.png";
 import brandlogo1 from"../resources/ADM-logos_transparent.png";
 import brandlogo2 from"../resources/hand.png";
+import brandlogo4 from"../resources/monkeyMart-logos_white.png";
+import brandlogo5 from"../resources/monkeyMart-logos_transparent.png";
+
 import brandlogo3 from "../resources/carts.png"
 import loginJson from "../resources/login.json";
+
 import "./Login.css";
 import { FaFacebook,FaTwitter,FaLock,FaUser,FaInstagram,FaEnvelope} from "react-icons/fa";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -50,13 +52,14 @@ class Login extends Component {
             console.log(response);
             if(response.data.result === "Success"){
                 this.props.history.push("/search");
+                //localStorage.setItem("userToken")
             } else if(response.data.result === "Invalid"){
                 this.setState({message : "Invalid username or password"})  
             }
         })
         .catch( error =>{
             console.log(error);
-            this.setState({message : error})  
+            this.setState({message : "Unexpected error occured while login"})  
         })
         }
     }
@@ -78,7 +81,8 @@ class Login extends Component {
             
            <div>
              <nav style={{padding:"0px"}}className="navbar navbar-expand-lg navbar-dark bg-dark">
-                 <a className="navbar-brand" href="#" style={{margin:"0px 5px"}}>MonkeyMart</a>
+             <a href="http://localhost:3000/"><img style={{height:"60px" , width:"60px",marginLeft:"25px"}} src={brandlogo4} alt="brandlogo "/></a>
+                 
                 
                  <span className="navbar-brand">
                  </span>
@@ -87,10 +91,10 @@ class Login extends Component {
                        <a href="#contact-page" className="nav-link" >Contact</a>
                        </li>
                        <li className="nav-item">
-                             <span className="nav-link" >Pricing</span>
+                             <span className="nav-link" >Blog</span>
                        </li>
                        <li className="nav-item">
-                             <span className="nav-link" >Download</span>
+                             <span className="nav-link" onClick={this.handleClick} >Signup</span>
                        </li>
                     </ul>
              </nav>
@@ -166,10 +170,17 @@ class Login extends Component {
                 </div>
               </div>
               < div id="contact-page">
+                 
+                      <a href="http://localhost:3000/">
+                      <span>
+                              <img src = {brandlogo5} style={{height:"60px"  ,width:"60px",marginRight:"8px"}}/>
+                      </span>
+                          </a>
+                 
               <span style={{margin:"auto"}}><FaEnvelope/>
                       <a style={{margin:"0px 5px"}} href="https://mail.google.com/mail/u/0/#inbox" alt="Facebook">
                              premprakash.jena@gmail.com</a>
-                             <img src = {brandlogo1} style={{height:"100px"  ,width:"100px"}}/>
+                             <img src = {brandlogo1} style={{height:"60px"  ,width:"60px",marginLeft:"8px"}}/>
                              <span>
                      <br/>         
                       </span> 
@@ -182,7 +193,7 @@ class Login extends Component {
                     <a href="https://twitter.com/?lang=en" alt="Facebook">
                             <span className="social-icons"><FaTwitter/></span>
                     </a>
-                     <p style={{marginBottom:"0px",paddingBottom:"5px"}}>copyright@2021</p>
+                     <p style={{marginBottom:"0px",paddingBottom:"5px",fontSize:"15px"}}><b>copyright @ 2021</b></p>
                       </span>
                       
                      

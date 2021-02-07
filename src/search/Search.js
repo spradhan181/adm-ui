@@ -3,8 +3,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import SearchResponse from "./searchresponse/SearchResponse";
-import brandlogo from"../resources/ADM-logos_black.png";
-import { FaSearch,FaUser  } from "react-icons/fa";
+import { FaUser  } from "react-icons/fa";
 import "./Search.css";
 
 class Search extends Component{
@@ -22,6 +21,9 @@ class Search extends Component{
         displayResult: false,
         displayError: false,
         
+    }
+    componentDidMount(){
+       // this.props.history.push("/")
     }
 
     setSearchDataValue = (event) => {
